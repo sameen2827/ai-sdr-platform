@@ -1,19 +1,12 @@
+import { sql } from "@/lib/db";
 import LeadTable from "@/components/LeadTable";
 
-async function getLeads() {
-  const res = await fetch("http://localhost:3000/api/leads", {
-    cache: "no-store",
-  });
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch leads");
-  }
-
-  return res.json();
-}
-
 export default async function LeadsPage() {
-  const leads = await getLeads();
+  const leads = await sql`
+    SELECT *
+    FROM leads
+    ORDER BY id DESC
+  `;
 
   return (
     <div>
