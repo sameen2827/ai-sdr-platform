@@ -1,36 +1,213 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+AI SDR Platform
+Overview
 
-## Getting Started
+AI SDR Platform is an AI-powered Sales Development Representative (SDR) system that automates lead qualification, lead capture, CRM management, email follow-ups, and meeting booking.
 
-First, run the development server:
+The platform combines conversational AI with workflow automation to help businesses generate, qualify, and nurture leads automatically.
 
-```bash
+Features
+AI Sales Agent
+Conversational AI powered by Groq LLM
+Real-time lead qualification
+Sales-focused conversations
+Captures customer requirements
+Lead Extraction
+
+Automatically extracts:
+
+Name
+Email
+Phone Number
+Company
+Service Required
+Budget
+Timeline
+Lead Scoring
+
+Automatic lead scoring based on:
+
+Email availability
+Phone availability
+Budget availability
+Timeline availability
+Company information
+
+Maximum Score: 100
+
+CRM Dashboard
+
+Provides:
+
+Total Leads
+New Leads
+Qualified Leads
+Won Leads
+Lost Leads
+Lead Management
+View all leads
+Update lead status
+Delete leads
+Track sales pipeline
+Email Automation
+
+Powered by n8n workflows:
+
+New lead notifications
+Automated follow-up emails
+Lead nurturing sequence
+Meeting Booking
+
+Integrated with Calendly:
+
+One-click meeting scheduling
+Automatic calendar invitations
+Sales consultation booking
+System Workflow
+
+Visitor
+→ AI Chat Agent
+→ Lead Qualification
+→ Lead Extraction
+→ Lead Scoring
+→ Save to NeonDB
+→ Trigger n8n Workflow
+→ Send Follow-up Email
+→ Book Calendly Meeting
+→ CRM Dashboard
+
+Tech Stack
+Frontend
+Next.js 16
+React
+TypeScript
+Tailwind CSS
+Backend
+Next.js API Routes
+Groq SDK
+Database
+Neon PostgreSQL
+Automation
+n8n
+Scheduling
+Calendly
+Deployment
+GitHub
+Vercel
+Project Structure
+
+app/
+
+├── api/
+
+│ ├── chat/
+
+│ ├── extract-lead/
+
+│ ├── leads/
+
+│ └── proposal/
+
+│
+
+├── chat/
+
+├── dashboard/
+
+│ ├── leads/
+
+│ └── lead/[id]/
+
+│
+
+├── components/
+
+├── data/
+
+└── lib/
+
+API Routes
+POST /api/chat
+
+Handles AI conversations using Groq.
+
+POST /api/extract-lead
+
+Extracts structured lead information from conversations.
+
+GET /api/leads
+
+Fetch all leads.
+
+POST /api/leads
+
+Save lead to database and trigger n8n workflow.
+
+Environment Variables
+
+Create a .env.local file:
+
+GROQ_API_KEY=YOUR_GROQ_API_KEY
+
+DATABASE_URL=YOUR_NEON_DATABASE_URL
+Installation
+
+Clone repository:
+
+git clone https://github.com/sameen2827/ai-sdr-platform.git
+
+Install dependencies:
+
+npm install
+
+Run development server:
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+http://localhost:3000
+Deployment
+GitHub
+git add .
+git commit -m "Initial Release"
+git push origin main
+Vercel
+Import GitHub Repository
+Add Environment Variables
+Deploy
+Integrations
+Groq AI
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Used for:
 
-## Learn More
+Conversational AI
+Lead qualification
+Lead extraction
+NeonDB
 
-To learn more about Next.js, take a look at the following resources:
+Used for:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Lead storage
+CRM data management
+n8n
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Used for:
 
-## Deploy on Vercel
+Workflow automation
+Email follow-ups
+Lead notifications
+Calendly
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Used for:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Meeting scheduling
+Consultation booking
+Future Enhancements
+Voice AI Agent
+WhatsApp Integration
+Proposal Generator
+AI Email Personalization
+Sales Analytics Dashboard
+Multi-Agent System
+Role-Based Access Control
+Lead Forecasting
