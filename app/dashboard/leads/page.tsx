@@ -1,12 +1,18 @@
-import { sql } from "@/lib/db";
 import LeadTable from "@/components/LeadTable";
+import { sql } from "@/lib/db";
 
-export default async function LeadsPage() {
+async function getLeads() {
   const leads = await sql`
     SELECT *
     FROM leads
     ORDER BY id DESC
   `;
+
+  return leads;
+}
+
+export default async function LeadsPage() {
+  const leads = await getLeads();
 
   return (
     <div>
